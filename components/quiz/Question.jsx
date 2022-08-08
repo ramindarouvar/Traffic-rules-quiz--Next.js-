@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { allUserAnswers, question } from '../../redux/store';
 import { getSingleQuestion } from './../../redux/quizItems/quizItemsThunk';
-import { addAnswer, updateAnswer } from './../../redux/userItems/userItemsThunk';
+import { addAnswer } from './../../redux/userItems/userItemsThunk';
 
 const Question = ({questionId}) => {
     const dispatch = useDispatch()
@@ -18,18 +18,18 @@ const Question = ({questionId}) => {
         dispatch(getSingleQuestion(questionId));
     },[])
     useEffect(() => {
-        // /If this is the first time the user has answered this question
-            if( answer !== 0 && userAnswers.length < questionId){   
-                // add answer
-                dispatch(addAnswer(questionId, answer));
-            }
-        // To change the option previously entered as an answer to new option
-            if( answer !== 0 && 
-                userAnswers.length >= questionId && 
-                answer !== userAnswers[questionId-1].userAnswer){
-                // update answer
-                dispatch(updateAnswer(questionId, answer));
-            }
+        // If this is the first time the user has answered this question
+        if( answer !== 0 
+            && (
+                // if user answered (first answer)
+                userAnswers[questionId-1].userAnswer === 0
+                // if user changed the answer option
+                || answer !== userAnswers[questionId-1].userAnswer
+                )
+            ){
+            // add answer
+            dispatch(addAnswer(questionId, answer));
+        }
     })
     
     const handleAnswering = event => {

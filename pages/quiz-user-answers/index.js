@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { allQuestions, allUserAnswers, quizDone } from '../../redux/store';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const AnswersAndOptions = () => {
@@ -16,11 +16,14 @@ const AnswersAndOptions = () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     },[])
+    useEffect(() => {
+        // If the exam is not over, redirect to the first page
+        if(!quizEnded) 
+            router.replace("/");
+    },[quizEnded])
+   
 
-    // If the exam is not over, redirect to the first page
-    if(!quizEnded) router.replace("/");
-
-    return ( 
+    if(quizEnded) return ( 
         <div className="quiz-section border rounded w-100">
             <h2 className="text-center text-white bg-dark py-3 mb-0">برگه تصحیح شده</h2>
             <div className="text-center sticky-top mb-5">

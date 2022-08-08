@@ -2,9 +2,23 @@ import {
     createSlice
 } from "@reduxjs/toolkit";
 
+// first user answers array whith zero values
+const answersArrayInit = userAnswersInitialState();
+
 const initialState = {
     user: {},
-    userAnswers: [],
+    userAnswers: answersArrayInit,
+}
+function userAnswersInitialState() {
+    const answersArray = []
+    for (let index = 0; index < 30; index++) {
+        answersArray.push({
+            questionId: index+1,
+            userAnswer: 0
+        })
+    }
+    console.log(answersArray);
+    return answersArray;
 }
 export const userItems = createSlice({
     name: "userItems",
@@ -20,7 +34,7 @@ export const userItems = createSlice({
             state.userAnswers = [...action.payload];
         },
         setUserAnswersClear: (state, action) => {
-            state.userAnswers = [];
+            state.userAnswers = [...answersArrayInit];
         },
     }
 });

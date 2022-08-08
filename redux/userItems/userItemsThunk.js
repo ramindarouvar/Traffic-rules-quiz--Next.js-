@@ -9,21 +9,11 @@ export const setUser = (currentUser) => (dispatch, getState) => {
 }
 export const addAnswer = (questionId, userAnswerOption) => (dispatch, getState) => {
     const state = getState();
-    const userAnswers = [...state.userItems.userAnswers];
+    var userAnswers = [...state.userItems.userAnswers];
     const singleAnswer = {
         questionId: questionId,
         userAnswer: userAnswerOption
     }
-    userAnswers.push(singleAnswer);
-    dispatch(setUserAnswers(userAnswers));
-}
-export const updateAnswer = (questionId, userAnswerOption) => (dispatch, getState) => {
-    const state = getState();
-    var userAnswers = [...state.userItems.userAnswers];
-    // update value to new answer
-    userAnswers[questionId - 1] = {
-        questionId: questionId,
-        userAnswer: userAnswerOption
-    }
+    userAnswers[questionId-1] = singleAnswer;
     dispatch(setUserAnswers(userAnswers));
 }

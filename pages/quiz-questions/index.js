@@ -5,7 +5,6 @@ import Question from './../../components/quiz/Question';
 import QuizNav from './../../components/quiz/QuizNav';
 import CountDownTimer from './../../components/time/CountDownTimer';
 import { finishQuiz } from '../../redux/quizItems/quizItemsThunk';
-import { addAnswer } from '../../redux/userItems/userItemsThunk';
 import { allUserAnswers, currentUser, quizDone } from '../../redux/store';
 import { useRouter } from 'next/router';
 
@@ -25,18 +24,12 @@ const Questions = () => {
         document.documentElement.scrollTop = 0;
     },[])
 
-    const handleQuestionChange = (difference) => {
-        if(30 >= questionId+difference)
+    const handleQuestionChange = (questionNumber) => {
+        if(30 >= questionNumber)
             // Set the ID of the new question for rendering 
-            setQuestionId(questionId+difference);
-
-        // If the user did not select an option for answering 
-        if(userAnswers.length < questionId){
-            // Add zero as the answer 
-            dispatch(addAnswer(questionId, 0));
-        }
-
-        if(30 < questionId+difference){
+            setQuestionId(questionNumber);
+        // end of quiz
+        if(30 < questionNumber){
             // set quizEnded true(in store)
             dispatch(finishQuiz())
         }
