@@ -34,8 +34,8 @@ const QuizEnd = () => {
                 {/* // show spinner for 1500 milliseconds */}
                     <div className="text-center py-5" style={{height: "400px"}}>
                         <div className="mt-5">
-                            <div class="spinner-border text-info p-5" role="status">
-                                <span class="sr-only">Loading...</span>
+                            <div className="spinner-border text-info p-5" role="status">
+                                <span className="sr-only">Loading...</span>
                             </div>
                         </div>
                         <span className="h2 text-info mt-2">محاسبه نمره ...</span>
