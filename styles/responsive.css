@@ -20,7 +20,7 @@
  }
 @media (min-width: 575.98px) { 
     .header-title{
-        font-size: 26px;  
+        font-size: 31px;  
     }
     .search-box{
         width: 100% !important;
@@ -41,7 +41,7 @@
 
 @media (min-width: 767px) { 
     .header-title{
-        font-size: 37px;  
+        font-size: 36px;  
     } 
     .search-box{
         transition: all .2s ease-in-out;
