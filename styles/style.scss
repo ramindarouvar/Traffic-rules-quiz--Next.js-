@@ -41,10 +41,15 @@ main{
 }
 .web-header{
     background-color: $y1Color;
+    color: inherit;
     margin: {
         right: 0 !important;
         left: 0 !important;
     }
+}
+.web-header:hover{
+    text-decoration: none;
+    color: inherit;
 }
 .nav-menu {
     background-color: $b1Color;

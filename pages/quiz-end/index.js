@@ -23,11 +23,10 @@ const QuizEnd = () => {
     },[]);
 
     useEffect(() => {
-       if(!loading) 
-          router.replace('/quiz-result');
-    },[loading]);
-    // If the exam is not over, redirect to the first page
-    if(!quizEnded) router.replace("/");
+        if(!loading) router.replace('/quiz-result');
+        // If the exam is not over, redirect to the first page
+        if(!quizEnded) router.replace("/");
+    },[loading, quizEnded]);
 
     if(loading) return ( 
         <div className="quiz-section border rounded w-100">

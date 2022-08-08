@@ -27,8 +27,10 @@ const CountDownTimer = ({replyingDeadline}) => {
             dispatch(finishQuiz())
         }
     })
-    // Redirect to the exam end page If the response time is over. 
-    if(quizEnded) router.replace("/quiz-end");
+    useEffect(() => {
+        // Redirect to the exam end page If the response time is over. 
+        if(quizEnded) router.replace("/quiz-end");
+    },[quizEnded])
     
     return ( 
         <div className="text-center">

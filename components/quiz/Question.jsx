@@ -23,7 +23,7 @@ const Question = ({questionId}) => {
             && (
                 // if user answered (first answer)
                 userAnswers[questionId-1].userAnswer === 0
-                // if user changed the answer option
+                // if user changed the answer 
                 || answer !== userAnswers[questionId-1].userAnswer
                 )
             ){

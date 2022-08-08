@@ -61,8 +61,6 @@ const Result = () => {
     useEffect(() => {
       if(isEmpty(cUser)) 
         router.replace('/');
-    //   else if(userAnswers.length !== Object.keys(questions).length)
-    //     router.replace('/quiz-questions');
     },[userAnswers])
 
     return (
@@ -146,16 +144,16 @@ const Result = () => {
                            </p> 
                            
                        </div>
-                       <div className="result-nav col-12 col-lg-9 text-center btn-group mb-1">
+                       <div className="result-nav col-12 col-lg-11 text-center btn-group mb-1">
                            <Link href="/quiz-user-answers" passHref>
-                               <a  className="result-nav-link btn btn-info w-50 ">
+                               <a  className="result-nav-link btn btn-info">
                                    <i className="fa fa-list-alt" aria-hidden="true"></i>
                                    {" "}
                                        مشاهده برگه تصحیح شده
                                </a>
                            </Link>
                            <Link href="/quiz-questions" passHref>
-                               <a  className="result-nav-link btn btn-warning w-50"
+                               <a  className="result-nav-link btn btn-warning"
                                    onClick={() => {
                                        dispatch(setUserAnswersClear());
                                        dispatch(newQuiz());
@@ -166,7 +164,7 @@ const Result = () => {
                                </a>
                            </Link>
                        </div>
-                       <div className="result-nav col-12 col-lg-9 text-center">
+                       <div className="result-nav col-12 col-lg-11 text-center">
                            <Link href="/" passHref>
                                <a className="result-nav-link btn btn-success w-100">
                                    <i className="fa fa-plus-square-o" aria-hidden="true"></i>

@@ -23,7 +23,12 @@ const Questions = () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     },[])
-
+    useEffect(() => {
+        // This page will be rendered only if the user has filled in the start form, otherwise it will be redirected to the data entry page 
+        if(isEmpty(cUser)) router.replace('/');
+        if(quizEnded) router.replace('/quiz-end');
+    },[cUser, quizEnded]);
+    
     const handleQuestionChange = (questionNumber) => {
         if(30 >= questionNumber)
             // Set the ID of the new question for rendering 
@@ -34,11 +39,8 @@ const Questions = () => {
             dispatch(finishQuiz())
         }
     }
-    // This page will be rendered only if the user has filled in the start form, otherwise it will be redirected to the data entry page 
-    if(isEmpty(cUser)) router.replace('/');
 
-    if(quizEnded === true) router.replace('/quiz-end');
-    else{
+    if(!isEmpty(cUser) && quizEnded === false){
         return (
             <div className="quiz-section border rounded w-100">
                 <form className="question h-100" id="questionForm" onSubmit = {e => e.preventDefault()}>
