@@ -84,7 +84,7 @@ const QuizStart = () => {
                 <title>آزمون راهنمایی و رانندگی</title>
             </Head>
             <div className="quiz-section border rounded w-100">
-                <h3 className="text-center mt-3 mb-5 start-h" style={{color: "#00558A"}}>شروع آزمون!</h3>
+                <h3 className="text-center mt-3 mb-4 start-h" style={{color: "#00558A"}}>شروع آزمون!</h3>
                 <form className="form-group" id="user-form" 
                       onSubmit={e=>{
                                     e.preventDefault();
@@ -216,9 +216,9 @@ const QuizStart = () => {
                         </div>
                     </div>
                 </form>
-                <div className="w-100 px-3 py-5">
+                <div className="w-100 px-3 py-4">
                     <h3 className="text-center exam-rules-header pt-4" id="rules">** قوانین آزمون **</h3>
-                    <div className="py-2 mt-3" style={{fontSize: "20px"}}>
+                    <div className="py-2 mt-3">
                         * این آزمون نمره منفی ندارد و پاسخ نادرست یا پاسخ ندادن هر سوال به منزله یک غلط است. 
                         <br className="mb-3"/>
                         * در صورت داشتن بیش از چهار غلط مردود می شوید.

@@ -46,10 +46,11 @@ const Questions = () => {
                 <form className="question h-100" id="questionForm" onSubmit = {e => e.preventDefault()}>
                     {/* countdown timer component for showing remaining time */}
                     <CountDownTimer replyingDeadline={20}/>
-                    {/* navigation for change questions */}
-                    <QuizNav onQuestionChange={handleQuestionChange} questionId={questionId}/>
-                    {/* render each question */}
-                    <Question key={`q${questionId}`} questionId={questionId}/>
+                    <QuizNav onQuestionChange={handleQuestionChange} questionId={questionId}>
+                        {/* render each question */}
+                        <Question key={`q${questionId}`} questionId={questionId}/>
+                        {/* navigation for change questions */}
+                    </QuizNav>
                 </form>
             </div>
          );

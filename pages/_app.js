@@ -4,7 +4,7 @@ import MainLayout from './../components/layouts/MainLayout';
 import Head from 'next/head';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './../styles/style.scss';
-import './../styles/responsive.css';
+import './../styles/responsive.scss';
 import './../styles/rtl.css';
 import './../styles/css/font-awesome.min.css';
 import Script from 'next/script';
