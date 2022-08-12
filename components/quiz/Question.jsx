@@ -48,7 +48,7 @@ const Question = ({questionId}) => {
                     <div id="question" key={questionId} className="row h-100 py-3 px-3 px-sm-5 mt-2 mb-3" style={{minHeight: "300px"}}>
                         <div className="col-12 d-flex flex-column px-2">
                             <h5 className="font-weight-bold pb-2 mb-4 text-right">{`${currentQuestion.id} : ${currentQuestion.text}`}</h5>
-                            <div className="options mx-1 pr-2 flex-fill row justify-content-around text-right ">
+                            <div className="options mx-1 pr-1 flex-fill row justify-content-around text-right ">
                                 { // loading and showing each answer option content
                                     Object.keys(currentQuestion.options).map(optionId => {
                                         return(
