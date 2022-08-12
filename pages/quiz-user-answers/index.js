@@ -38,10 +38,10 @@ const AnswersAndOptions = () => {
                 if(question.imageUrl===""){
                     // If the question does not have an image.
                     return(
-                            <div id="question" key={questionId} className="row h-100 py-3 px-3 px-md-5 mt-2 mb-3">
-                                <div className="col-12 d-flex flex-column border-bottom">
-                                    <h4 className="font-weight-bold pb-2">{`${question.id} : ${question.text}`}</h4>
-                                    <div className="options mr-1 flex-fill row justify-content-around ml-2 pr-3">
+                        <div id="question" key={questionId} className="row h-100 py-3 px-3 px-sm-5 mt-2 mb-3" style={{minHeight: "300px"}}>
+                            <div className="col-12 d-flex flex-column px-2">
+                                <h5 className="font-weight-bold pb-2 mb-4 text-right">{`${question.id} : ${question.text}`}</h5>
+                                <div className="options mx-1 pr-1 flex-fill row justify-content-around text-right ">
                                         { // load and show each option content *
                                             Object.keys(question.options).map(optionId => {
                                                 return(
@@ -79,10 +79,10 @@ const AnswersAndOptions = () => {
                 else {
                     // If the question does has an image.
                     return ( 
-                        <div id="question" key={questionId} className="row h-100 py-3 px-3 px-md-5 mt-2 mb-3">
-                            <div className="col-md-8 d-flex flex-column">
-                                <h4 className="font-weight-bold pb-2">{`${question.id} : ${question.text}`}</h4>
-                                <div className="options mr-4 flex-fill d-flex flex-column justify-content-around ml-2 pr-3">
+                        <div id="question" key={questionId} className="row h-100 py-3 px-3 px-sm-5 mt-2 mb-3" style={{minHeight: "300px"}}>
+                        <div className="col-sm-8 d-flex flex-column px-2">
+                            <h5 className="font-weight-bold pb-2 mb-4 text-right">{`${question.id} : ${question.text}`}</h5>
+                                <div className="options mx-1 flex-fill d-flex flex-column justify-content-around pr-3">
                                     {// loading and showing each answer option content
                                         Object.keys(question.options).map(optionId => {
                                                 return(
