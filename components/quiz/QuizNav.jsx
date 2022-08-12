@@ -14,22 +14,17 @@ const QuizNav = ({onQuestionChange, questionId, children}) => {
             <div>
                 {children}
             </div>
-            <div className="pb-3 btn-group row justify-content-around">
-
-                {questionId===1 ? 
-                    // Do not display the Go to "Previous" button when the user is on the first question.
-                    null
-                    :
-                    <button type="submit" id="back-q" className="q-nav-botton btn btn-primary col-6 d-flex justify-content-center"  
+            <div className="pb-3 btn-group">
+                    <button type="submit" id="back-q" className="q-nav-botton btn btn-primary d-flex justify-content-center"  
                             onClick={() => {
                                 // Send -1 to the method to change the question method to go to the previous question
                                 onQuestionChange(questionId-1)
                             }}
+                            disabled={questionId===1 ? true : false}
                     >   
                         <i className="fa fa-arrow-right d-none d-md-block pt-1 px-1" aria-hidden="true"></i>{" "}
                         <span className="q-nav-text active pr-1">قبلی</span>
                     </button>
-                }
                     <button type="submit" id="next-q" 
                         className={questionId === 30 ? "q-nav-botton btn btn-success col-6 d-flex justify-content-center" : "q-nav-botton btn btn-primary col-6 d-flex justify-content-center"}
                         onClick={() => {
