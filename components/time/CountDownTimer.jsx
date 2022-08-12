@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { quizDone } from '../../redux/store';
 import { finishQuiz } from '../../redux/quizItems/quizItemsThunk';
 import { useRouter } from 'next/router';
+import swal from 'sweetalert';
 
 const CountDownTimer = ({replyingDeadline}) => {
     const router = useRouter();
@@ -23,7 +24,7 @@ const CountDownTimer = ({replyingDeadline}) => {
             setRemainingTime(calculateRemainingTime(endTime));
         }, 1000);
         if(remainingTime === "پایان زمان آزمون"){
-            alert("زمان شما به پایان رسید")
+            swal("زمان شما به پایان رسید")
             dispatch(finishQuiz())
         }
     })
@@ -33,12 +34,12 @@ const CountDownTimer = ({replyingDeadline}) => {
     },[quizEnded])
     
     return ( 
-        <div className="text-center">
+        <div className="text-center mb-3">
             <div id="countDownTimer"
                 className={remainingTime === "پایان زمان آزمون" ? 
-                "countDownTimer rounded-bottom bg-danger d-block d-md-inline-block px-2 text-white mx-auto"
+                "countDownTimer rounded-bottom bg-danger d-inline px-2 text-white mx-auto"
                 : 
-                "countDownTimer rounded-bottom d-block d-md-inline-block px-2 text-white mx-auto"}
+                "countDownTimer rounded-bottom d-inline px-2 text-white mx-auto"}
             >
                 {remainingTime}
             </div>

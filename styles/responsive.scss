@@ -19,13 +19,37 @@
     }
  }
 @media (max-width: 575.98px) {
+    .header-title{
+        font-size: 20px !important;  
+    }
     body {
-        font-size: 10px !important;
-      }
+        font-size: 16px !important;
+    }
+        #question{
+        h5 {
+            font-size: 19px !important;
+        }
+    };
+
+}
+@media (max-width: 767px) {
+    .start-h{
+        font-size: 27px;
+    }
+    #question{
+        h5 {
+            font-size: 22px;
+        }
+    };
+    #backToTop{
+        bottom: 40px;
+        left: 40px;
+        right: auto;
+    };
 } 
 @media (min-width: 575.98px) { 
     .header-title{
-        font-size: 31px;  
+        font-size: 24px !important;  
     }
     .search-box{
         width: 100% !important;

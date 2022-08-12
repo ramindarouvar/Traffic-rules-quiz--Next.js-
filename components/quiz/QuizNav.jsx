@@ -1,8 +1,8 @@
-const QuizNav = ({onQuestionChange, questionId}) => {
+const QuizNav = ({onQuestionChange, questionId, children}) => {
     return ( 
         <div className="q-nav text-center">
             <div className="slidecontainer my-1">
-                <input type="range" className="slider"
+                <input type="range" className="slider w-75"
                        value={questionId} min="1" max="30" 
                        onChange={e => {
                                 // render the question seleted from range input 
@@ -11,7 +11,10 @@ const QuizNav = ({onQuestionChange, questionId}) => {
                         }
                 />
             </div>
-            <div className="btn-group row justify-content-around" style={{width: "30%"}}>
+            <div>
+                {children}
+            </div>
+            <div className="pb-3 btn-group row justify-content-around">
 
                 {questionId===1 ? 
                     // Do not display the Go to "Previous" button when the user is on the first question.

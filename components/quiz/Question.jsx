@@ -46,13 +46,13 @@ const Question = ({questionId}) => {
             // If the question does not have an image.
             return(
                     <div id="question" key={questionId} className="row h-100 py-3 px-3 px-sm-5 mt-2 mb-3" style={{minHeight: "300px"}}>
-                        <div className="col-12 d-flex flex-column">
-                            <h4 className="font-weight-bold pb-2 mb-4 text-center">{`${currentQuestion.id} : ${currentQuestion.text}`}</h4>
-                            <div className="options mr-1 flex-fill row justify-content-around ml-2 pr-3 text-center">
+                        <div className="col-12 d-flex flex-column px-2">
+                            <h5 className="font-weight-bold pb-2 mb-4 text-right">{`${currentQuestion.id} : ${currentQuestion.text}`}</h5>
+                            <div className="options mx-1 pr-2 flex-fill row justify-content-around text-right ">
                                 { // loading and showing each answer option content
                                     Object.keys(currentQuestion.options).map(optionId => {
                                         return(
-                                            <label key={`${questionId}${optionId}`} className="option col-12 col-sm-6 my-2" htmlFor={`option-${optionId}`}>
+                                            <label key={`${questionId}${optionId}`} className="option col-12 col-sm-6 mb-1" htmlFor={`option-${optionId}`}>
                                                 <div className="position-relative d-inline-block">
                                                     <input type="radio" id={`option-${optionId}`} name="options" className="d-none" 
                                                             value={Number(optionId)}
@@ -95,13 +95,13 @@ const Question = ({questionId}) => {
             // If the question has an image.
             return ( 
                 <div id="question" key={questionId} className="row h-100 py-3 px-3 px-sm-5 mt-2 mb-3" style={{minHeight: "300px"}}>
-                    <div className="col-sm-8 d-flex flex-column">
-                        <h4 className="font-weight-bold pb-2 mb-4">{`${currentQuestion.id} : ${currentQuestion.text}`}</h4>
-                        <div className="options mr-4 flex-fill d-flex flex-column justify-content-around ml-2 pr-3">
+                    <div className="col-sm-8 d-flex flex-column px-2">
+                        <h5 className="font-weight-bold pb-2 mb-4 text-right">{`${currentQuestion.id} : ${currentQuestion.text}`}</h5>
+                        <div className="options mx-1 flex-fill d-flex flex-column justify-content-around pr-3">
                             {// loading and showing each answer option content
                                 Object.keys(currentQuestion.options).map(optionId => {
                                     return(
-                                        <label key={`${questionId}${optionId}`} className="option mb-1" htmlFor={`option-${optionId}`}>
+                                        <label key={`${questionId}${optionId}`} className="option text-right mb-1" htmlFor={`option-${optionId}`}>
                                             <div className="position-relative d-inline-block">
                                                 {/* Main radio button (not displayed) */}
                                                 <input type="radio" id={`option-${optionId}`} name="options" className="d-none" 

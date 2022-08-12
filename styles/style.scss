@@ -2,9 +2,9 @@
     font-family: "titrBold";
     src: url('./fonts/TitrBold.woff');
 }
-@font-face{
-    font-family: "Nazanin";
-    src: url('./fonts/Nazanin.woff');
+@font-face {
+    font-family: Nazanin;
+    src: url("fonts/Nazanin.woff") format("woff");
 }
 
 @import "globalColors";
@@ -38,6 +38,9 @@ main{
 .start-h {
     font-family: 'titrBold';
     color: #062a0e;
+}
+.form-control, #submitButton{
+    font-size: inherit !important;
 }
 .web-header{
     background-color: $y1Color;
@@ -104,7 +107,6 @@ main{
 .quiz-section {
     background: #fadb6d;
     width: 85% ;
-    font-size: 25px;
 }
 .start-button{
     font-size: 25px;
@@ -127,7 +129,7 @@ option {
     font-size: 33px;
 }
 .q-nav-text{
-    font-size: 25px;
+    font-size: 22px;
     position: relative;
     bottom: 3px;
 }
@@ -306,11 +308,15 @@ option {
     text-align: right;
 }
 .swal-button-container{
-    float: left
+    float: left;
+    font-weight: bold;
 }
-.swal-button:before{
-    content:''
+.swal-button{
+    background: #27ae60;
+}
+.swal-button:hover{
+    background: #116c37 !important;
 }
 .swal-button:after {
     content: ' | متوجه شدم';
-}   
+}
