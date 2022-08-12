@@ -144,34 +144,36 @@ const Result = () => {
                            </p> 
                            
                        </div>
-                       <div className="result-nav col-12 col-lg-11 text-center btn-group mb-1">
-                           <Link href="/quiz-user-answers" passHref>
-                               <a  className="result-nav-link btn btn-info">
-                                   <i className="fa fa-list-alt" aria-hidden="true"></i>
-                                   {" "}
-                                       مشاهده برگه تصحیح شده
-                               </a>
-                           </Link>
-                           <Link href="/quiz-questions" passHref>
-                               <a  className="result-nav-link btn btn-warning"
-                                   onClick={() => {
-                                       dispatch(setUserAnswersClear());
-                                       dispatch(newQuiz());
-                                   }}            
-                               >
-                                   <i className="fa fa-refresh fa-2" aria-hidden="true"></i> 
-                                   {" "} تکرار آزمون {" "}
-                               </a>
-                           </Link>
-                       </div>
-                       <div className="result-nav col-12 col-lg-11 text-center">
-                           <Link href="/" passHref>
-                               <a className="result-nav-link btn btn-success w-100">
-                                   <i className="fa fa-plus-square-o" aria-hidden="true"></i>
-                                   {" "}
-                                   آزمون جدید
-                               </a>
-                           </Link>
+                       <div className='pb-3'>
+                            <div className="result-nav text-center btn-group-vertical mb-1">
+                                <Link href="/quiz-user-answers" passHref>
+                                    <a  className="result-nav-link btn btn-info">
+                                        <i className="fa fa-list-alt" aria-hidden="true"></i>
+                                        {" "}
+                                            مشاهده برگه تصحیح شده
+                                    </a>
+                                </Link>
+                                <Link href="/quiz-questions" passHref>
+                                    <a  className="result-nav-link btn btn-warning"
+                                        onClick={() => {
+                                            dispatch(setUserAnswersClear());
+                                            dispatch(newQuiz());
+                                        }}            
+                                    >
+                                        <i className="fa fa-refresh fa-2" aria-hidden="true"></i> 
+                                        {" "} تکرار آزمون {" "}
+                                    </a>
+                                </Link>
+                            </div>
+                            <div className="result-nav text-center">
+                                <Link href="/" passHref>
+                                    <a className="result-nav-link btn btn-success w-100">
+                                        <i className="fa fa-plus-square-o" aria-hidden="true"></i>
+                                        {" "}
+                                        آزمون جدید
+                                    </a>
+                                </Link>
+                            </div>
                        </div>
                    </div>
                </div>
