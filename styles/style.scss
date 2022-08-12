@@ -302,3 +302,15 @@ option {
 .contact-info{
     font-size: 20px ;
 }
+.swal-text{
+    text-align: right;
+}
+.swal-button-container{
+    float: left
+}
+.swal-button:before{
+    content:''
+}
+.swal-button:after {
+    content: ' | متوجه شدم';
+}   

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 import Header from './../common/Header';
 import Footer from './../common/Footer';
 
@@ -27,7 +27,7 @@ const MainLayout = props => {
             <Header />
             <main>
                 <div className="row mx-lg-2 mx-xl-5 justify-content-around" style={{marginBottom: '100px'}}>
-                    <div className="col-11 col-md-10 col-xl-9 order-md-0 mx-auto mb-3 px-0">{props.children}</div>
+                    <div className="col-12 px-2 px-sm-0 col-sm-11 col-xl-9 order-md-0 mx-auto mb-3 px-0">{props.children}</div>
                 </div>
             </main>
             <button id="backToTop" className={btnDisplay ? "d-block btn btn-info" : "d-none" } onClick={() => backToTop()} title="رفتن به بالای صفحه">

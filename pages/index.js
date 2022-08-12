@@ -6,6 +6,7 @@ import { setUserAnswersClear, setUserClear } from '../redux/userItems/userItems'
 import { setClearCurrentQuestion } from '../redux/quizItems/quizItems';
 import { setUser } from '../redux/userItems/userItemsThunk';
 import { useRouter } from 'next/router';
+import swal from 'sweetalert';
 import Head from 'next/head';
 
 const QuizStart = () => {
@@ -57,13 +58,12 @@ const QuizStart = () => {
                                 };
             // set current user
             dispatch(setUser(currentUser));
-            alert(
-                "توجه : \n"
-                + "\n \t * این آزمون نمره منفی ندارد و پاسخ نادرست یا پاسخ ندادن هر سوال به منزله یک غلط است. \n"
-                + "\n \t * در صورت داشتن بیش از چهار غلط مردود می شوید. \n"
-                ) 
-                // Going to the URL that renders the questions
-                router.push("/quiz-questions");
+            swal(`توجه
+                    * این آزمون نمره منفی ندارد و پاسخ نادرست یا پاسخ ندادن هر سوال به منزله یک غلط است.
+                    * در صورت داشتن بیش از چهار غلط مردود می شوید. 
+                `);
+            // Going to the URL that renders the questions
+            router.push("/quiz-questions");
         } 
         else {
             validator.current.showMessages();
@@ -84,7 +84,7 @@ const QuizStart = () => {
                 <title>آزمون راهنمایی و رانندگی</title>
             </Head>
             <div className="quiz-section border rounded w-100">
-                <h1 className="text-center mt-3 mb-5 start-h" style={{color: "#00558A"}}>شروع آزمون!</h1>
+                <h3 className="text-center mt-3 mb-5 start-h" style={{color: "#00558A"}}>شروع آزمون!</h3>
                 <form className="form-group" id="user-form" 
                       onSubmit={e=>{
                                     e.preventDefault();
@@ -93,7 +93,7 @@ const QuizStart = () => {
                                 }
                 >
                     <div className="row mx-auto">
-                        <div className="col-md-4 mb-4">
+                        <div className="col-12 col-sm-6 col-md-4 mb-4">
                             <input type="text" className="form-control" id="firstname" placeholder="نام" 
                                     name="firstname"
                                     onFocus={e => {
@@ -110,7 +110,7 @@ const QuizStart = () => {
                                 validator.current.message("firstname", firstName, "required")
                             }
                         </div>
-                        <div className="col-md-4 mb-4">
+                        <div className="col-12 col-sm-6 col-md-4 mb-4">
                             <input type="text" className="form-control" id="lastname" placeholder="نام خانوادگی" 
                                     name="lastname"
                                     onFocus={e => {
@@ -125,7 +125,7 @@ const QuizStart = () => {
                             />
                             {validator.current.message("lastname", lastName, "required")}
                         </div>
-                        <div className="col-md-4 mb-4">
+                        <div className="col-12 col-sm-6 col-md-4 mb-4">
                             <input type="text" className="form-control persian-number" id="NID" placeholder="کد ملی" 
                                     maxLength="10" 
                                     name="NID"
@@ -136,10 +136,10 @@ const QuizStart = () => {
                                         e.target.setAttribute('placeholder', "کد ملی")
                                     }}
                                     onChange={e => {
-                                        if(isNaN(Number(e.target.value))){
+                                        if(isNaN(e.target.value)){
                                             // If the input is not a number, do not add anything to the displayed string
                                             e.target.style.backgroundColor = "rgba(231, 76, 60,0.3)";
-                                            e.target.setAttribute("placeholder", "لطفا عدد وارد کنید!")
+                                            e.target.setAttribute("placeholder", "لطفا عدد را با کیبرد انگلیسی وارد کنید!")
                                             e.target.value = nationalId + "" ;
                                         } else {
                                             // If the input value is a number
@@ -153,45 +153,47 @@ const QuizStart = () => {
                                 validator.current.message("NID", nationalId, "required|min:10|numeric")
                             }
                         </div>
-                        <div className="col-12 text-center mb-3" name="birthDate"
+                        <div className="col-12 px-4 text-center mb-3" name="birthDate"
                              onKeyDown={e=>handlePressEnterKey(e)}
                              >
                             <label htmlFor="birth" className="d-block d-md-inline">
                                 تاریخ تولد: 
                             </label>
-                            <select className="birth-select d-block d-md-inline mx-1 rounded border bg-light" name="day" id="birth" 
-                                    onChange={e => {
-                                        setBirthDay(e.target.value)
-                                        setBirthDate([birthYear, birthMonth, e.target.value]);
-                                    }}
-                                    defaultValue = {0}
-                            >
-                                <option value={0} disabled hidden>روز</option>
-                                <option>۰۱</option><option>۰۲</option><option>۰۳</option><option>۰۴</option><option>۰۵</option><option>۰۶</option><option>۰۷</option><option>۰۸</option><option>۰۹</option><option>۱۰</option><option>۱۱</option><option>۱۲</option><option>۱۳</option><option>۱۴</option><option>۱۵</option><option>۱۶</option><option>۱۷</option><option>۱۸</option><option>۱۹</option><option>۲۰</option><option>۲۱</option><option>۲۲</option><option>۲۳</option><option>۲۴</option><option>۲۵</option><option>۲۶</option><option>۲۷</option><option>۲۸</option><option>۲۹</option><option>۳۰</option><option>۳۱</option>
-                            </select>
-                            <select className="birth-select d-block d-md-inline mx-1 rounded border bg-light" name="month" 
-                                    onChange={e => {
-                                        setBirthMonth(e.target.value)
-                                        setBirthDate([birthYear, e.target.value, birthDay ]);
-                                    }}
-                                    defaultValue = {0}
-                            >
-                            <option value={0} disabled hidden>ماه</option>
-                                <option>۰۱</option><option>۰۲</option><option>۰۳</option><option>۰۴</option><option>۰۵</option><option>۰۶</option><option>۰۷</option><option>۰۸</option><option>۰۹</option><option>۱۰</option><option>۱۱</option><option>۱۲</option>
-                            </select>
-                            <select className="birth-select d-block d-md-inline mx-1 rounded border bg-light" name="year"
-                                    onChange={e => {
-                                        setBirthYear(e.target.value)
-                                        setBirthDate([e.target.value, birthMonth, birthDay]);
-                                    }}
-                                    defaultValue = {0}
-                            >
-                            <option value={0} disabled hidden>سال</option>
-                                <option>۱۳۸۲</option><option>۱۳۸۱</option><option>۱۳۸۰</option><option>۱۳۷۹</option><option>۱۳۷۸</option><option>۱۳۷۷</option><option>۱۳۷۶</option><option>۱۳۷۵</option><option>۱۳۷۴</option><option>۱۳۷۳</option><option>۱۳۷۲</option><option>۱۳۷۱</option><option>۱۳۷۰</option><option>۱۳۶۹</option><option>۱۳۶۸</option><option>۱۳۶۷</option><option>۱۳۶۶</option><option>۱۳۶۵</option><option>۱۳۶۴</option><option>۱۳۶۳</option><option>۱۳۶۲</option><option>۱۳۶۱</option><option>۱۳۶۰</option><option>۱۳۵۹</option><option>۱۳۵۸</option><option>۱۳۵۷</option><option>۱۳۵۶</option><option>۱۳۵۵</option><option>۱۳۵۴</option><option>۱۳۵۳</option><option>۱۳۵۲</option><option>۱۳۵۱</option><option>۱۳۵۰</option><option>۱۳۴۹</option><option>۱۳۴۸</option><option>۱۳۴۷</option><option>۱۳۴۶</option><option>۱۳۴۵</option><option>۱۳۴۴</option><option>۱۳۴۳</option><option>۱۳۴۲</option><option>۱۳۴۱</option><option>۱۳۴۰</option><option>۱۳۳۹</option><option>۱۳۳۸</option><option>۱۳۳۷</option><option>۱۳۳۶</option><option>۱۳۳۵</option><option>۱۳۳۴</option><option>۱۳۳۳</option><option>۱۳۳۲</option><option>۱۳۳۱</option><option>۱۳۳۰</option><option>۱۳۲۹</option><option>۱۳۲۸</option><option>۱۳۲۷</option><option>۱۳۲۶</option><option>۱۳۲۵</option><option>۱۳۲۴</option><option>۱۳۲۳</option><option>۱۳۲۲</option><option>۱۳۲۱</option><option>۱۳۲۰</option><option>۱۳۱۹</option><option>۱۳۱۸</option><option>۱۳۱۷</option><option>۱۳۱۶</option><option>۱۳۱۵</option><option>۱۳۱۴</option><option>۱۳۱۳</option><option>۱۳۱۲</option><option>۱۳۱۱</option><option>۱۳۱۰</option><option>۱۳۰۹</option><option>۱۳۰۸</option><option>۱۳۰۷</option><option>۱۳۰۶</option><option>۱۳۰۵</option><option>۱۳۰۴</option><option>۱۳۰۳</option><option>۱۳۰۲</option><option>۱۳۰۱</option><option>۱۳۰۰</option>
-                            </select>
-                            {
-                                validator.current.message("birthDate", birthDateFilled, "required: true")
-                            }
+                            <div className='d-flex flex-column flex-sm-row justify-content-center mt-1'>
+                                <select className="mb-1 birth-select text-center d-block d-md-inline mx-1 rounded border bg-light" name="day" id="birth" 
+                                        onChange={e => {
+                                            setBirthDay(e.target.value)
+                                            setBirthDate([birthYear, birthMonth, e.target.value]);
+                                        }}
+                                        defaultValue = {0}
+                                >
+                                    <option value={0} disabled hidden>روز</option>
+                                    <option>۰۱</option><option>۰۲</option><option>۰۳</option><option>۰۴</option><option>۰۵</option><option>۰۶</option><option>۰۷</option><option>۰۸</option><option>۰۹</option><option>۱۰</option><option>۱۱</option><option>۱۲</option><option>۱۳</option><option>۱۴</option><option>۱۵</option><option>۱۶</option><option>۱۷</option><option>۱۸</option><option>۱۹</option><option>۲۰</option><option>۲۱</option><option>۲۲</option><option>۲۳</option><option>۲۴</option><option>۲۵</option><option>۲۶</option><option>۲۷</option><option>۲۸</option><option>۲۹</option><option>۳۰</option><option>۳۱</option>
+                                </select>
+                                <select className="mb-1 birth-select text-center d-block d-md-inline mx-1 rounded border bg-light" name="month" 
+                                        onChange={e => {
+                                            setBirthMonth(e.target.value)
+                                            setBirthDate([birthYear, e.target.value, birthDay ]);
+                                        }}
+                                        defaultValue = {0}
+                                >
+                                <option value={0} disabled hidden>ماه</option>
+                                    <option>۰۱</option><option>۰۲</option><option>۰۳</option><option>۰۴</option><option>۰۵</option><option>۰۶</option><option>۰۷</option><option>۰۸</option><option>۰۹</option><option>۱۰</option><option>۱۱</option><option>۱۲</option>
+                                </select>
+                                <select className="mb-1 birth-select text-center d-block d-md-inline mx-1 rounded border bg-light" name="year"
+                                        onChange={e => {
+                                            setBirthYear(e.target.value)
+                                            setBirthDate([e.target.value, birthMonth, birthDay]);
+                                        }}
+                                        defaultValue = {0}
+                                >
+                                <option value={0} disabled hidden>سال</option>
+                                    <option>۱۳۸۲</option><option>۱۳۸۱</option><option>۱۳۸۰</option><option>۱۳۷۹</option><option>۱۳۷۸</option><option>۱۳۷۷</option><option>۱۳۷۶</option><option>۱۳۷۵</option><option>۱۳۷۴</option><option>۱۳۷۳</option><option>۱۳۷۲</option><option>۱۳۷۱</option><option>۱۳۷۰</option><option>۱۳۶۹</option><option>۱۳۶۸</option><option>۱۳۶۷</option><option>۱۳۶۶</option><option>۱۳۶۵</option><option>۱۳۶۴</option><option>۱۳۶۳</option><option>۱۳۶۲</option><option>۱۳۶۱</option><option>۱۳۶۰</option><option>۱۳۵۹</option><option>۱۳۵۸</option><option>۱۳۵۷</option><option>۱۳۵۶</option><option>۱۳۵۵</option><option>۱۳۵۴</option><option>۱۳۵۳</option><option>۱۳۵۲</option><option>۱۳۵۱</option><option>۱۳۵۰</option><option>۱۳۴۹</option><option>۱۳۴۸</option><option>۱۳۴۷</option><option>۱۳۴۶</option><option>۱۳۴۵</option><option>۱۳۴۴</option><option>۱۳۴۳</option><option>۱۳۴۲</option><option>۱۳۴۱</option><option>۱۳۴۰</option><option>۱۳۳۹</option><option>۱۳۳۸</option><option>۱۳۳۷</option><option>۱۳۳۶</option><option>۱۳۳۵</option><option>۱۳۳۴</option><option>۱۳۳۳</option><option>۱۳۳۲</option><option>۱۳۳۱</option><option>۱۳۳۰</option><option>۱۳۲۹</option><option>۱۳۲۸</option><option>۱۳۲۷</option><option>۱۳۲۶</option><option>۱۳۲۵</option><option>۱۳۲۴</option><option>۱۳۲۳</option><option>۱۳۲۲</option><option>۱۳۲۱</option><option>۱۳۲۰</option><option>۱۳۱۹</option><option>۱۳۱۸</option><option>۱۳۱۷</option><option>۱۳۱۶</option><option>۱۳۱۵</option><option>۱۳۱۴</option><option>۱۳۱۳</option><option>۱۳۱۲</option><option>۱۳۱۱</option><option>۱۳۱۰</option><option>۱۳۰۹</option><option>۱۳۰۸</option><option>۱۳۰۷</option><option>۱۳۰۶</option><option>۱۳۰۵</option><option>۱۳۰۴</option><option>۱۳۰۳</option><option>۱۳۰۲</option><option>۱۳۰۱</option><option>۱۳۰۰</option>
+                                </select>
+                                {
+                                    validator.current.message("birthDate", birthDateFilled, "required: true")
+                                }
+                            </div>
                         </div>
                         <div className="col-12 text-center mb-3" name="accept-rules" >
                             <input type="checkbox" id="accept-rules" 
@@ -209,13 +211,14 @@ const QuizStart = () => {
 
                         </div>
                         <div className="col-12 text-center">
-                            <button type="submit" id="submitButton" className="start-button btn btn-success px-4 pb-2 mx-auto">شروع می کنم</button>
+                            <button type="submit" id="submitButton" 
+                            className="start-button btn btn-success px-2 pb-2 mx-auto">شروع می کنم</button>
                         </div>
                     </div>
                 </form>
-                <div className="w-100 p-5">
+                <div className="w-100 px-3 py-5">
                     <h3 className="text-center exam-rules-header pt-4" id="rules">** قوانین آزمون **</h3>
-                    <div className="px-3 py-2 mt-3 text-justify" style={{fontSize: "24px"}}>
+                    <div className="py-2 mt-3" style={{fontSize: "20px"}}>
                         * این آزمون نمره منفی ندارد و پاسخ نادرست یا پاسخ ندادن هر سوال به منزله یک غلط است. 
                         <br className="mb-3"/>
                         * در صورت داشتن بیش از چهار غلط مردود می شوید.
