@@ -19,8 +19,8 @@ const MainLayout = props => {
     },[])
     // function for going to top of the page
     const backToTop = () => {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+        const topElement = document.getElementById('header');
+        topElement.scrollIntoView({behavior: "smooth", block: "start"})
     }
     return ( 
         <Fragment>
@@ -30,7 +30,7 @@ const MainLayout = props => {
                     <div className="col-12 px-2 px-sm-0 col-sm-11 col-xl-9 order-md-0 mx-auto mb-3 px-0">{props.children}</div>
                 </div>
             </main>
-            <button id="backToTop" className={btnDisplay ? "d-block btn btn-info" : "d-none" } onClick={() => backToTop()} title="رفتن به بالای صفحه">
+            <button id="backToTop" className={btnDisplay ? "d-block btn btn-info" : "d-none" } onClick={backToTop} title="رفتن به بالای صفحه">
                 <i className="fa fa-hand-pointer-o" aria-hidden="true"></i>
             </button>
             <Footer />
