@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, memo } from 'react';
 
@@ -7,18 +8,14 @@ const Header = () => {
             <header>
                 <Link href='/' passHref>
                     <a className='web-header'>
-                        <div className="row web-header mb-3">
-                            <div className="col-sm-2 text-right d-flex flex-column justify-content-end">
-                                <img src="images/lights.png" className="img-fluid d-none d-lg-inline" alt="traffic-lights" style={{width: "34%"}}/>
-                            </div>
-                            <div className="col-md p-2 p-lg-0 align-self-center">
+                        <div className="d-flex flex-row justify-content-between web-header mb-3">
+                            <Image src="/images/lights.png" width='90' height='122' className="img-fluid d-none d-lg-inline" alt="traffic-lights"/>
+                            <div className="p-2 p-lg-0 align-self-center web-title">
                                 <p className="header-title text-center m-0 pt-1 pb-2">
                                     آزمون آیین نامه راهنمایی و رانندگی
                                 </p>
                             </div>
-                            <div className="col-sm-2 text-left d-flex flex-column justify-content-end align-items-end">
-                                <img src="images/Warning.png" className="img-fluid d-none d-lg-inline" alt="warning-sign" style={{width: "45%"}}/>
-                            </div>
+                            <Image src="/images/Warning.png" width='120' height='90' className="img-fluid d-none d-lg-inline" alt="warning-sign"/>
                         </div>
                     </a>
                 </Link>
