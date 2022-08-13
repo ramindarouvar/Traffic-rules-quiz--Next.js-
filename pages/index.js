@@ -58,7 +58,8 @@ const QuizStart = () => {
                                 };
             // set current user
             dispatch(setUser(currentUser));
-            swal(`توجه
+            swal(`توجه:
+                  
                     * این آزمون نمره منفی ندارد و پاسخ نادرست یا پاسخ ندادن هر سوال به منزله یک غلط است.
                     * در صورت داشتن بیش از چهار غلط مردود می شوید. 
                 `);
@@ -160,7 +161,7 @@ const QuizStart = () => {
                                 تاریخ تولد: 
                             </label>
                             <div className='d-flex flex-column flex-sm-row justify-content-center mt-1'>
-                                <select className="mb-1 birth-select text-center d-block d-md-inline mx-1 rounded border bg-light" name="day" id="birth" 
+                                <select className="py-2 py-md-1 mb-1 birth-select text-center d-block d-md-inline mx-1 rounded border bg-light" name="day" id="birth" 
                                         onChange={e => {
                                             setBirthDay(e.target.value)
                                             setBirthDate([birthYear, birthMonth, e.target.value]);
@@ -170,7 +171,7 @@ const QuizStart = () => {
                                     <option value={0} disabled hidden>روز</option>
                                     <option>۰۱</option><option>۰۲</option><option>۰۳</option><option>۰۴</option><option>۰۵</option><option>۰۶</option><option>۰۷</option><option>۰۸</option><option>۰۹</option><option>۱۰</option><option>۱۱</option><option>۱۲</option><option>۱۳</option><option>۱۴</option><option>۱۵</option><option>۱۶</option><option>۱۷</option><option>۱۸</option><option>۱۹</option><option>۲۰</option><option>۲۱</option><option>۲۲</option><option>۲۳</option><option>۲۴</option><option>۲۵</option><option>۲۶</option><option>۲۷</option><option>۲۸</option><option>۲۹</option><option>۳۰</option><option>۳۱</option>
                                 </select>
-                                <select className="mb-1 birth-select text-center d-block d-md-inline mx-1 rounded border bg-light" name="month" 
+                                <select className="py-2 py-md-1 mb-1 birth-select text-center d-block d-md-inline mx-1 rounded border bg-light" name="month" 
                                         onChange={e => {
                                             setBirthMonth(e.target.value)
                                             setBirthDate([birthYear, e.target.value, birthDay ]);
@@ -180,7 +181,7 @@ const QuizStart = () => {
                                 <option value={0} disabled hidden>ماه</option>
                                     <option>۰۱</option><option>۰۲</option><option>۰۳</option><option>۰۴</option><option>۰۵</option><option>۰۶</option><option>۰۷</option><option>۰۸</option><option>۰۹</option><option>۱۰</option><option>۱۱</option><option>۱۲</option>
                                 </select>
-                                <select className="mb-1 birth-select text-center d-block d-md-inline mx-1 rounded border bg-light" name="year"
+                                <select className="py-2 py-md-1 mb-1 birth-select text-center d-block d-md-inline mx-1 rounded border bg-light" name="year"
                                         onChange={e => {
                                             setBirthYear(e.target.value)
                                             setBirthDate([e.target.value, birthMonth, birthDay]);

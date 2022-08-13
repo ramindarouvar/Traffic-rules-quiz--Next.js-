@@ -37,9 +37,9 @@ const CountDownTimer = ({replyingDeadline}) => {
         <div className="text-center mb-3">
             <div id="countDownTimer"
                 className={remainingTime === "پایان زمان آزمون" ? 
-                "countDownTimer rounded-bottom bg-danger d-inline px-2 text-white mx-auto"
+                "countDownTimer rounded bg-danger d-inline px-2 text-white mx-auto"
                 : 
-                "countDownTimer rounded-bottom d-inline px-2 text-white mx-auto"}
+                "countDownTimer rounded d-inline px-2 text-white mx-auto"}
             >
                 {remainingTime}
             </div>
