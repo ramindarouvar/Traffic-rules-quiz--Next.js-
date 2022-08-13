@@ -79,6 +79,10 @@ const QuizStart = () => {
             document.getElementById("user-form").requestSubmit(submitButton);
         }
     }
+    const showRules = () => {
+        const topElement = document.getElementById('rules');
+        topElement.scrollIntoView({behavior: "smooth", block: "start"})
+    }
     return ( 
         <>
             <Head>
@@ -205,7 +209,7 @@ const QuizStart = () => {
                             />
                             {" "}
                             <label className="accept-rules-label mb-0" htmlFor="accept-rules">
-                                <a href="#rules">قوانین آزمون </a>
+                                <a href='#' onClick={showRules}>قوانین آزمون </a>
                                 را می پذیرم.
                             </label>
                         {validator.current.message("accept-rules", acceptRules, "accepted")}

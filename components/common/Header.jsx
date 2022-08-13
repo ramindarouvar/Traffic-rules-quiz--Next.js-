@@ -5,7 +5,7 @@ import { Fragment, memo } from 'react';
 const Header = () => {
     return ( 
         <Fragment>
-            <header>
+            <header id='header'>
                 <Link href='/' passHref>
                     <a className='web-header'>
                         <div className="d-flex flex-row justify-content-between web-header mb-3">
