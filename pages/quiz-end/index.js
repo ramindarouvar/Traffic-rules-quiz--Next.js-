@@ -27,25 +27,19 @@ const QuizEnd = () => {
         // If the exam is not over, redirect to the first page
         if(!quizEnded) router.replace("/");
     },[loading, quizEnded]);
-
-    if(loading) return ( 
+ 
+    return (
         <div className="quiz-section border rounded w-100">
-            {/* {loading ?  */}
-                {/* // show spinner for 1500 milliseconds */}
-                    <div className="text-center py-5" style={{height: "400px"}}>
-                        <div className="mt-5">
-                            <div className="spinner-border text-info p-5" role="status">
-                                <span className="sr-only">Loading...</span>
-                            </div>
-                        </div>
-                        <span className="h2 text-info mt-2">محاسبه نمره ...</span>
+            <div className="text-center py-5" style={{height: "400px"}}>
+                <div className="mt-5">
+                    <div className="spinner-border text-info p-4 mb-2" role="status">
+                        <span className="sr-only">Loading...</span>
                     </div>
-                {/* // : */}
-                {/* // then show result component */}
-                {/* // <Redirect to="/quiz-result" /> */}
-            {/* } */}
+                </div>
+                <span className="h2 text-info mt-5">محاسبه نمره ...</span>
+            </div>
         </div>
-     );
+    )
 }
  
 export default QuizEnd;

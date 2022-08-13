@@ -117,13 +117,13 @@ const Result = () => {
                        </div>  
                    </div>
                    <div className="result-information w-100 mt-2 mx-auto row justify-content-center">
-                       <div className="quiz-user col-12 col-md-7 row align-content-start">
+                       <div className="quiz-user col-12 col-md-7 px-0 row align-content-start">
                            <div className="col-sm-5 col-md-12 mb-2 m-md-0"> نام: <span>{cUser.firstname}</span></div>
                            <div className="col-sm-7 col-md-12 mb-2 m-md-0"> نام خانوادگی: <span>{cUser.lastname}</span></div>
                            <div className="col-sm-12 col-md-12"> شماره ملی: <span>{cUser.id}</span></div>
                            <hr className="col-12 d-block d-md-none " />
                        </div>
-                       <div className="quiz-statistics text-right my-2 my-2 mr-4 mr-md-0 col-12 col-md-5">
+                       <div className="quiz-statistics text-right my-2 my-2 mr-4 mr-md-0 col-12 col-md-5 px-0">
                            <p className=" ">
                                تعداد کل سوالات: {userAnswers.length}
                            </p>
